@@ -1,10 +1,11 @@
-import { IsOptional, IsString, MaxLength, IsBoolean } from 'class-validator'
+import { IsOptional, IsString, MaxLength, IsBoolean, IsNotEmpty } from 'class-validator'
 import { Transform } from 'class-transformer'
 
 export class UpdateTodoDto {
   @Transform(({ value }) => value?.trim())
   @IsOptional()
   @IsString()
+  @IsNotEmpty()
   @MaxLength(100)
   title?: string
 
